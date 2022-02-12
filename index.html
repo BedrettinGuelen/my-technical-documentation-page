@@ -1,0 +1,234 @@
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<nav id='navbar'>
+  <div id='nav-title'>
+    <i class='material-icons'>html</i>
+  <header>The Python Tutorial</header>
+  </div>
+  <ul>
+    <li><a href="#Whetting_your_appetite" class='nav-link'>Whetting Your Appetite</a></li>
+    <li><a href="#Using_the_python_interpreter" class='nav-link'>Using the Python Interpreter</a></li>
+    <li><a href="#An_informal_introduction_to_python" class='nav-link'>An Informal Introduction to Python</a></li>
+    <li><a href="#More_control_flow_tools" class='nav-link'>More Control Flow Tools</a></li>
+    <li><a href="#Data_structures" class='nav-link'>Data Structures</a></li>
+  </ul>
+</nav>
+<main id='main-doc'>
+  <section class='main-section'>
+    <header id='Whetting_your_appetite'>Whetting Your Appetite</header>
+    <p>If you do much work on computers, eventually you find that there’s some task you’d like to automate. For example, you may wish to perform a search-and-replace over a large number of text files, or rename and rearrange a bunch of photo files in a complicated way. Perhaps you’d like to write a small custom database, or a specialized GUI application, or a simple game.</p>
+    <p>If you’re a professional software developer, you may have to work with several C/C++/Java libraries but find the usual write/compile/test/re-compile cycle is too slow. Perhaps you’re writing a test suite for such a library and find writing the testing code a tedious task. Or maybe you’ve written a program that could use an extension language, and you don’t want to design and implement a whole new language for your application.</p>
+    <p>Python is just the language for you.</p>
+    <p>You could write a Unix shell script or Windows batch files for some of these tasks, but shell scripts are best at moving around files and changing text data, not well-suited for GUI applications or games. You could write a C/C++/Java program, but it can take a lot of development time to get even a first-draft program. Python is simpler to use, available on Windows, macOS, and Unix operating systems, and will help you get the job done more quickly. <br><br>
+
+Python is simple to use, but it is a real programming language, offering much more structure and support for large programs than shell scripts or batch files can offer. On the other hand, Python also offers much more error checking than C, and, being a very-high-level language, it has high-level data types built in, such as flexible arrays and dictionaries. Because of its more general data types Python is applicable to a much larger problem domain than Awk or even Perl, yet many things are at least as easy in Python as in those languages. <br><br>
+
+Python allows you to split your program into modules that can be reused in other Python programs. It comes with a large collection of standard modules that you can use as the basis of your programs — or as examples to start learning to program in Python. Some of these modules provide things like file I/O, system calls, sockets, and even interfaces to graphical user interface toolkits like Tk. <br><br>
+
+Python is an interpreted language, which can save you considerable time during program development because no compilation and linking is necessary. The interpreter can be used interactively, which makes it easy to experiment with features of the language, to write throw-away programs, or to test functions during bottom-up program development. It is also a handy desk calculator. <br><br>
+
+Python enables programs to be written compactly and readably. Programs written in Python are typically much shorter than equivalent C, C++, or Java programs, for several reasons:</p>
+    <ul>
+      <li>the high-level data types allow you to express complex operations in a single statement;</li>
+      <li>statement grouping is done by indentation instead of beginning and ending brackets;</li>
+      <li>no variable or argument declarations are necessary.</li>
+    </ul>
+    <p>Python is extensible: if you know how to program in C it is easy to add a new built-in function or module to the interpreter, either to perform critical operations at maximum speed, or to link Python programs to libraries that may only be available in binary form (such as a vendor-specific graphics library). Once you are really hooked, you can link the Python interpreter into an application written in C and use it as an extension or command language for that application.</p>
+    <p>By the way, the language is named after the BBC show “Monty Python’s Flying Circus” and has nothing to do with reptiles. Making references to Monty Python skits in documentation is not only allowed, it is encouraged!</p>
+    <p>Now that you are all excited about Python, you’ll want to examine it in some more detail. Since the best way to learn a language is to use it, the tutorial invites you to play with the Python interpreter as you read.</p>
+    <p>In the next chapter, the mechanics of using the interpreter are explained. This is rather mundane information, but essential for trying out the examples shown later.</p>
+    <p>The rest of the tutorial introduces various features of the Python language and system through examples, beginning with simple expressions, statements and data types, through functions and modules, and finally touching upon advanced concepts like exceptions and user-defined classes.</p>
+  </section>
+  <section class='main-section'>
+    <header id="Using_the_python_interpreter">Using the Python Interpreter</header>
+    <h4>Invoking the Interpreter</h4>
+    <p>The Python interpreter is usually installed as <samp>/usr/local/bin/python3.10</samp> on those machines where it is available; putting <samp>/usr/local/bin</samp> in your Unix shell’s search path makes it possible to start it by typing the command:</p>
+    <pre>
+    <code>python3.10</code></pre>
+    <p>to the shell. 1 Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., <samp>/usr/local/python</samp> is a popular alternative location.)</p>
+    <p>On Windows machines where you have installed Python from the Microsoft Store, the <samp>python3.10</samp> command will be available. If you have the py.exe launcher installed, you can use the <samp>py</samp> command. See Excursus: Setting environment variables for other ways to launch Python.</p>
+    <p>Typing an end-of-file character (<kbd>Control-D</kbd> on Unix, <kbd>Control-Z</kbd> on Windows) at the primary prompt causes the interpreter to exit with a zero exit status. If that doesn’t work, you can exit the interpreter by typing the following command: <samp>quit()</samp>.</p>
+    
+  </section>
+  <section class='main-section'>
+    <header id='An_informal_introduction_to_python'>An Informal Introduction to Python</header>
+    <p>In the following examples, input and output are distinguished by the presence or absence of prompts (>>> and …): to repeat the example, you must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. Note that a secondary prompt on a line by itself in an example means you must type a blank line; this is used to end a multi-line command.</p>
+    <p>You can toggle the display of prompts and output by clicking on <samp>>>></samp> in the upper-right corner of an example box. If you hide the prompts and output for an example, then you can easily copy and paste the input lines into your interpreter.</p>
+    <p>Many of the examples in this manual, even those entered at the interactive prompt, include comments. Comments in Python start with the hash character, <samp>#</samp>, and extend to the end of the physical line. A comment may appear at the start of a line or following whitespace or code, but not within a string literal. A hash character within a string literal is just a hash character. Since comments are to clarify code and are not interpreted by Python, they may be omitted when typing in examples.</p>
+    <p>Some examples:</p>
+    <p><pre>
+      <code>
+# this is the first comment
+spam = 1  # and this is the second comment
+          # ... and now a third!
+text = "# This is not a comment because it's inside quotes."
+      </code>
+    </pre></p>
+  </section>
+  <section class='main-section'>
+    <header id='More_control_flow_tools'>More Control Flow Tools</header>
+    <p>Besides the <samp>while</samp> statement just introduced, Python uses the usual flow control statements known from other languages, with some twists.</p>
+    <h4>if Statements</h4>
+    <p>Perhaps the most well-known statement type is the <samp>if</samp> statement. For example:</p>
+    <pre>
+      <code>
+>>> x = int(input("Please enter an integer: "))
+Please enter an integer: 42
+>>> if x < 0:
+...     x = 0
+...     print('Negative changed to zero')
+... elif x == 0:
+...     print('Zero')
+... elif x == 1:
+...     print('Single')
+... else:
+...     print('More')
+...
+
+x = int(input("Please enter an integer: "))
+
+if x < 0:
+    x = 0
+    print('Negative changed to zero')
+elif x == 0:
+    print('Zero')
+elif x == 1:
+    print('Single')
+else:
+    print('More')
+      </code>
+    </pre>
+    <p>There can be zero or more <samp>elif</samp> parts, and the <samp>else</samp> part is optional. The keyword <samp>‘elif’</samp> is short for <samp>‘else if’</samp>, and is useful to avoid excessive indentation. An <samp>if … elif … elif …</samp> sequence is a substitute for the <samp> switch</samp> or <samp>case</samp> statements found in other languages.</p>
+    <p>If you’re comparing the same value to several constants, or checking for specific types or attributes, you may also <samp>find</samp> the <samp>match</samp> statement useful. For more details see match Statements.
+    </p>
+    <h4>for Statements</h4>
+    <p>The <samp>for</samp> statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence. For example (no pun intended):</p>
+    <pre><code>
+>>> # Measure some strings:
+... words = ['cat', 'window', 'defenestrate']
+>>> for w in words:
+...     print(w, len(w))
+...
+cat 3
+window 6
+defenestrate 12
+
+# Measure some strings:
+words = ['cat', 'window', 'defenestrate']
+for w in words:
+    print(w, len(w))
+    </code></pre>
+    <p>Code that modifies a collection while iterating over that same collection can be tricky to get right. Instead, it is usually more straight-forward to loop over a copy of the collection or to create a new collection:</p>
+    <pre><code>
+# Create a sample collection
+users = {'Hans': 'active', 'Éléonore': 'inactive', '景太郎': 'active'}
+
+# Strategy:  Iterate over a copy
+for user, status in users.copy().items():
+    if status == 'inactive':
+        del users[user]
+
+# Strategy:  Create a new collection
+active_users = {}
+for user, status in users.items():
+    if status == 'active':
+        active_users[user] = status
+    </code></pre>
+    <h4>Defining Functions</h4>
+    <p>We can create a function that writes the Fibonacci series to an arbitrary boundary:</p>
+    <pre>
+      <code>
+>>> def fib(n):    # write Fibonacci series up to n
+...     """Print a Fibonacci series up to n."""
+...     a, b = 0, 1
+...     while a < n:
+...         print(a, end=' ')
+...         a, b = b, a+b
+...     print()
+...
+>>> # Now call the function we just defined:
+... fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+
+def fib(n):    # write Fibonacci series up to n
+    """Print a Fibonacci series up to n."""
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+# Now call the function we just defined:
+fib(2000)
+      </code>
+    </pre>
+    <p>The keyword <samp> def</samp> introduces a function definition. It must be followed by the function name and the parenthesized list of formal parameters. The statements that form the body of the function start at the next line, and must be indented.</p>
+    <p>The first statement of the function body can optionally be a string literal; this string literal is the function’s documentation string, or <i>docstring</i>. (More about docstrings can be found in the section Documentation Strings.) There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code; it’s good practice to include docstrings in code that you write, so make a habit of it.</p>
+    <p>The <i>execution</i> of a function introduces a new symbol table used for the local variables of the function. More precisely, all variable assignments in a function store the value in the local symbol table; whereas variable references first look in the local symbol table, then in the local symbol tables of enclosing functions, then in the global symbol table, and finally in the table of built-in names. Thus, global variables and variables of enclosing functions cannot be directly assigned a value within a function (unless, for global variables, named in a <samp>global</samp> statement, or, for variables of enclosing functions, named in a <samp>nonlocal</samp> statement), although they may be referenced.</p>
+    <p>The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using <i> call</i> by <i>value</i> (where the <i>value</i> is always an object <i>reference</i>, not the value of the object). 1 When a function calls another function, or calls itself recursively, a new local symbol table is created for that call.</p>
+    <p>A function definition associates the function name with the function object in the current symbol table. The interpreter recognizes the object pointed to by that name as a user-defined function. Other names can also point to that same function object and can also be used to access the function:</p>
+    <pre><code>
+>>> fib
+<function fib at 10042ed0>
+>>> f = fib
+>>> f(100)
+0 1 1 2 3 5 8 13 21 34 55 89
+</code></pre>
+<p>Coming from other languages, you might object that <samp>fib</samp> is not a function but a procedure since it doesn’t return a value. In fact, even functions without a <samp>return</samp> statement do return a value, albeit a rather boring one. This value is called <samp>None</samp> (it’s a built-in name). Writing the value <samp>None</samp> is normally suppressed by the interpreter if it would be the only value written. You can see it if you really want to using <samp>print()</samp>:</p>
+<pre>
+  <code>
+>>> fib(0)
+>>> print(fib(0))
+None
+
+fib(0)
+print(fib(0))
+  </code>
+</pre>
+<p>It is simple to write a function that returns a list of the numbers of the Fibonacci series, instead of printing it:</p>
+<pre>
+  <code>
+>>> def fib2(n):  # return Fibonacci series up to n
+...     """Return a list containing the Fibonacci series up to n."""
+...     result = []
+...     a, b = 0, 1
+...     while a < n:
+...         result.append(a)    # see below
+...         a, b = b, a+b
+...     return result
+...
+>>> f100 = fib2(100)    # call it
+>>> f100                # write the result
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+def fib2(n):  # return Fibonacci series up to n
+    """Return a list containing the Fibonacci series up to n."""
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)    # see below
+        a, b = b, a+b
+    return result
+
+f100 = fib2(100)    # call it
+f100                # write the result
+  </code>
+</pre>
+<p>This example, as usual, demonstrates some new Python features:</p>
+<ul>
+  <li>The <samp>return</samp> statement returns with a value from a function. <samp>return</samp> without an expression argument returns <samp>None</samp>. Falling off the end of a function also returns <samp>None</samp>.</li>
+  <li>The statement <samp> result.append(a)</samp> calls a <i>method</i> of the list object <samp>result</samp>. A method is a function that ‘belongs’ to an object and is named <samp>obj.methodname</samp>, where <samp>obj</samp> is some object (this may be an expression), and <samp>methodname</samp> is the name of a method that is defined by the object’s type. Different types define different methods. Methods of different types may have the same name without causing ambiguity. (It is possible to define your own object types and methods, using <i>classes</i>, see Classes) The method <samp>append()</samp> shown in the example is defined for list objects; it adds a new element at the end of the list. In this example it is equivalent to <samp>result = result + [a]</samp>, but more efficient.</li>
+  <li>The statement <samp> result.append(a)</samp> calls a <i>method</i> of the list object <samp>result</samp>. A method is a function that ‘belongs’ to an object and is named <samp>obj.methodname</samp>, where <samp>obj</samp> is some object (this may be an expression), and <samp>methodname</samp> is the name of a method that is defined by the object’s type. Different types define different methods. Methods of different types may have the same name without causing ambiguity. (It is possible to define your own object types and methods, using <i>classesy</i>, see Classes) The method <samp>append()</samp> shown in the example is defined for list objects; it adds a new element at the end of the list. In this example it is equivalent to <samp>result = result + [a]</samp>, but more efficient.</li>
+</ul>
+  </section>
+  <section class='main-section'>
+    <header id='Data_structures'>Data Structures</header>
+    <p>This chapter describes some things you’ve learned about already in more detail, and adds some new things as well.</p>
+    <h4>More on Lists</h4>
+    <p><samp>list.<b>append</b>(<var> x</var>)</samp><br>
+Add an item to the end of the list. Equivalent to <samp>a[len(a):] = [x]</samp>.</p>
+<p><samp>list.<b>extend</b>(<var> iterable</var>)</samp><br>
+Extend the list by appending all the items from the iterable. Equivalent to <samp>a[len(a):] = iterable</samp></p>
+  </section>
+</main>
